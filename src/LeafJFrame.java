@@ -1,4 +1,6 @@
 /**
+ * Original project proposal:
+ * 
  * The program would be a generator for life-like tree leaf images. The leaves would have variance within 
  * species, and would have the feature of a branching vein generation system. The leaves would be 
  * generated in similar structures as real-life leaves. The structures would for example include veins 
@@ -13,7 +15,7 @@
  * to improve the accuracy of the leaf-identification program. This program would allow me to program in 
  * species of leaves and then batch-create hundreds, perhaps even thousands of leaf images. Other research 
  * projects that involve computer vision could also perhaps benefit from this project. Additionally, the 
- * program’s methods could perhaps be useful to graphic designers who need random leaves for their project. 
+ * program’s methods could perhaps be useful to graphic designers who need random leaves for their project.
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
