@@ -19,116 +19,57 @@
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
-// import statements
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+// import statements 
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 
-/**
- * The main JFrame itself. This is what you see when the program runs.
- * @author Patrick Thomas
- *
- */
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+ 
+/* FrameDemo.java requires no other files. */
 public class LeafJFrame
 {
-	/**
-	 * Initialize the variables of the JFrame components.
-	 */
-	private JFrame main_frame;
-	private JLabel header_label;
-	private JLabel status_label;
-	private JPanel control_panel;
-	private JLabel msg_label;
-	
-	/**
-	 * Other variables
-	 */
-	private final String WINDOW_TITLE = "Leaf Generator";
-	private final int DEFAULT_WIDTH = 400;
-	private final int DEFAULT_HEIGHT = 400;
-	
-	private final WindowAdapter CLOSE_ADAPTER = new WindowAdapter() 
-	{
-		public void windowClosing(WindowEvent windowEvent)
-		{
-			System.exit(0);
-		} // end windowClosing
-	} /* end new WindowAdapter */;
+    /**
+     * Create the GUI and show it.  For thread safety,
+     * this method should be invoked from the
+     * event-dispatching thread.
+     */
+    private static void createAndShowGUI()
+    {
+        //Create and set up the window.
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame frame = new JFrame("Leaf Generator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Container menuControls = frame.getContentPane();
+        JButton helloButton = new JButton("Hello");
+        menuControls.add(helloButton);
+ 
+//        JLabel emptyLabel = new JLabel("Hello");
+//        emptyLabel.setPreferredSize(new Dimension(800, 600));
+//        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+        
+        //Display the window.
+        frame.pack();
+        frame.setLocationRelativeTo(null);
 
-	/**
-	 * Constructor for the JFrame.
-	 */
-	public LeafJFrame()
-	{
-		prepareGUI();
-	} // end constructor
-	
-	/**
-	 * The main code for the Java code.
-	 * @param args Any arguments passed to the Java interpreter
-	 */
-	public static void main(String[] args)
-	{
-		LeafJFrame swingContainer = new LeafJFrame();  
-		swingContainer.showJFrame();
-	} // end main
-	
-	/**
-	 * Initialize all elements of the JFrame
-	 */
-	private void prepareGUI()
-	{
-		// create frame
-		main_frame = new JFrame(WINDOW_TITLE);
-		main_frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);	// set size
-		main_frame.setLayout(new GridLayout(3, 1));			// set layout
-      
-		main_frame.addWindowListener(CLOSE_ADAPTER);		// add close window adapter
-		
-		header_label = new JLabel("", JLabel.CENTER);        
-		status_label = new JLabel("", JLabel.CENTER);    
-		status_label.setSize(350, 100);
-		
-		msg_label = new JLabel("", JLabel.CENTER);
-
-		control_panel = new JPanel();
-		control_panel.setLayout(new FlowLayout());
-
-		main_frame.add(header_label);
-		main_frame.add(control_panel);
-		main_frame.add(status_label);
-		main_frame.setVisible(true);  
-	} // end prepareGui
-	
-	/**
-	 * 
-	 */
-	private void showJFrame()
-	{
-		// set the text on the already-created labels
-		msg_label.setText("Welcome to TutorialsPoint SWING Tutorial.");
-		header_label.setText("Container in action: JFrame"); 
-		
-		// pop-up frame
-		final JFrame frame = new JFrame();
-		frame.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		frame.setLayout(new FlowLayout());       
-		frame.add(msg_label);
-		
-		// make the frame able to be closed
-		frame.addWindowListener(CLOSE_ADAPTER);
-		
-		// place button
-		JButton okButton = new JButton("Open a Frame");
-		okButton.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				status_label.setText("A Frame shown to the user.");
-				frame.setVisible(true);
-			}
-		});
-		control_panel.add(okButton);
-		main_frame.setVisible(true);  
-	} // end showJFrameDemo
+        frame.setSize(800, 600);
+        frame.setVisible(true);
+    } // end createAndShowGUI
+ 
+    public static void main(String[] args)
+    {
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                createAndShowGUI();
+            } // end run()
+        });
+    } // end main
 } // end LeafJFrame
