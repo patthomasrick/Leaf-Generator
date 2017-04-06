@@ -19,57 +19,164 @@
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
-// import statements 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Container;
-import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
- 
-/* FrameDemo.java requires no other files. */
-public class LeafJFrame
-{
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event-dispatching thread.
-     */
-    private static void createAndShowGUI()
-    {
-        //Create and set up the window.
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Leaf Generator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        Container menuControls = frame.getContentPane();
-        JButton helloButton = new JButton("Hello");
-        menuControls.add(helloButton);
- 
-//        JLabel emptyLabel = new JLabel("Hello");
-//        emptyLabel.setPreferredSize(new Dimension(800, 600));
-//        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-        
-        //Display the window.
-        frame.pack();
-        frame.setLocationRelativeTo(null);
+import javax.swing.JTextField;
 
-        frame.setSize(800, 600);
-        frame.setVisible(true);
-    } // end createAndShowGUI
- 
-    public static void main(String[] args)
+public class LeafJFrame extends JFrame implements ItemListener
+{
+	// static strings
+	final static String WINDOW_TITLE = "Leaf Generator";
+	final static String COMBO_OPT1 = "Option 1";
+	final static String COMBO_OPT2 = "Option 2";
+	
+	// panel
+	JPanel cards;
+
+	/** To supress warning... */
+	private static final long serialVersionUID = 1L;
+
+	public LeafJFrame()
+	{
+		super(WINDOW_TITLE);
+	} // end constructor
+	
+	public void createMenuBar()
+	{
+		// create the bar itself
+		JMenuBar menuBar = new JMenuBar();
+		
+		// create the "File" menu
+		JMenu menuFile = new JMenu("File");
+		
+		// create Exit option
+		JMenuItem menuItemExit = new JMenuItem("Exit");
+		
+		// add menu items to the menu
+		menuFile.add(menuItemExit);
+		
+		// add menubar
+		menuBar.add(menuFile);
+		 
+		// adds menu bar to the frame
+		this.setJMenuBar(menuBar);
+	} // end createMenuBar
+	
+	public void createComboPane(Container pane)
+	{
+		JPanel comboBoxPane = new JPanel();
+		String[] comboBoxItems = {COMBO_OPT1, COMBO_OPT2};
+		
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		JComboBox cb =  new JComboBox(comboBoxItems);
+		cb.setEditable(false);
+		cb.addItemListener(this);
+		
+		comboBoxPane.add(cb);
+		
+		pane.add(comboBoxPane, BorderLayout.PAGE_START);
+	} // end createComboPane
+	
+	public void createCards(Container pane)
+	{
+		JPanel card1 = new JPanel();
+		card1.add(new JButton("Button 1"));
+		
+		JPanel card2 = new JPanel();
+		card2.add(new JTextField("TextField", 20));
+		
+		this.cards = new JPanel(new CardLayout());
+		
+		this.cards.add(card1, "Card 1");
+		this.cards.add(card2, "Card 2");
+		
+		pane.add(this.cards, BorderLayout.CENTER);
+	} // end createCards
+	
+    public void itemStateChanged(ItemEvent e)
     {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                createAndShowGUI();
-            } // end run()
-        });
-    } // end main
+        CardLayout cl = (CardLayout) (cards.getLayout());
+        cl.show(cards, (String) e.getItem());
+    }
+	
+	public static void main(String[] args)
+	{
+		// create frame
+		LeafJFrame frame = new LeafJFrame();
+		frame.setLayout(new CardLayout());
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		// add menu
+		frame.createMenuBar();
+		
+		// add cards
+		frame.createComboPane(frame.getContentPane());
+		frame.createCards(frame.getContentPane());
+		
+		// make the window visible
+		frame.pack();
+		frame.setVisible(true);
+	} // end main
 } // end LeafJFrame
+
+//// import statements 
+//import java.awt.Container;
+//
+//import javax.swing.JButton;
+//import javax.swing.JFrame;
+// 
+///* FrameDemo.java requires no other files. */
+//public class LeafJFrame
+//{
+//    /**
+//     * Create the GUI and show it.  For thread safety,
+//     * this method should be invoked from the
+//     * event-dispatching thread.
+//     */
+//    private static void createAndShowGUI()
+//    {
+//        //Create and set up the window.
+//        JFrame.setDefaultLookAndFeelDecorated(true);
+//        JFrame frame = new JFrame("Leaf Generator");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        
+//        Container menuControls = frame.getContentPane();
+//        JButton helloButton = new JButton("Hello");
+//        menuControls.add(helloButton);
+// 
+////        JLabel emptyLabel = new JLabel("Hello");
+////        emptyLabel.setPreferredSize(new Dimension(800, 600));
+////        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+//        
+//        //Display the window.
+//        frame.pack();
+//        frame.setLocationRelativeTo(null);
+//
+//        frame.setSize(800, 600);
+//        frame.setVisible(true);
+//    } // end createAndShowGUI
+// 
+//    public static void main(String[] args)
+//    {
+//        //Schedule a job for the event-dispatching thread:
+//        //creating and showing this application's GUI.
+//        javax.swing.SwingUtilities.invokeLater(new Runnable()
+//        {
+//            public void run()
+//            {
+//                createAndShowGUI();
+//            } // end run()
+//        });
+//    } // end main
+//} // end LeafJFrame
