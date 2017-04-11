@@ -1,4 +1,6 @@
-/**
+/*
+ * LeafJFrame.java
+ * 
  * Original project proposal:
  * 
  * The program would be a generator for life-like tree leaf images. The leaves would have variance within 
@@ -19,58 +21,17 @@
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
-/*
- * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Oracle or the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
-
-
-
-/*
- * LeafJFrame.java
- */
-
+// import statements
 import java.awt.*;
 import javax.swing.*;
 
 public class LeafJFrame
 {
-    final static String BUTTONPANEL = "Tab with JButtons";
-    final static String TEXTPANEL = "Tab with JTextField";
-    final static int extraWindowWidth = 100;
+    final static int windowWidth = 400;
 
     public void addComponentToPane(Container pane)
     {
-        JTabbedPane tabbedPane = new JTabbedPane();
-
-        // create the "cards".
-        JPanel card1 = new JPanel() {
+    	JPanel instructions = new JPanel() {
         	// to statisfy warning
 			private static final long serialVersionUID = 1L;
 
@@ -79,22 +40,21 @@ public class LeafJFrame
             // in one row.
             public Dimension getPreferredSize() {
                 Dimension size = super.getPreferredSize();
-                size.width += extraWindowWidth;
+                size.width = windowWidth;
                 return size;
             }
         };
+        instructions.add(new JLabel("Instructions are here"));
+    	
+        // create the button panel
+        JPanel buttonPanel = new JPanel();
         
-        card1.add(new JButton("Button 1"));
-        card1.add(new JButton("Button 2"));
-        card1.add(new JButton("Button 3"));
+        buttonPanel.add(new JButton("Button 1"));
+        buttonPanel.add(new JButton("Button 2"));
+        buttonPanel.add(new JButton("Button 3"));
 
-        JPanel card2 = new JPanel();
-        card2.add(new JTextField("TextField", 20));
-
-        tabbedPane.addTab(BUTTONPANEL, card1);
-        tabbedPane.addTab(TEXTPANEL, card2);
-
-        pane.add(tabbedPane, BorderLayout.CENTER);
+        pane.add(instructions, BorderLayout.PAGE_START);
+        pane.add(buttonPanel, BorderLayout.CENTER);
     }
 
     /**
@@ -119,7 +79,7 @@ public class LeafJFrame
     public static void main(String[] args) {
         /* Use an appropriate Look and Feel */
         try {
-            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
@@ -132,6 +92,10 @@ public class LeafJFrame
         }
         /* Turn off metal's use of bold fonts */
         UIManager.put("swing.boldMetal", Boolean.FALSE);
+        
+        LeafArrayGenerator arrayGen = new LeafArrayGenerator(50, 15,
+        		0.60, 30, 0.10);
+        arrayGen.printBoolean();
         
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
