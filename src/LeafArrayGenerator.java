@@ -36,7 +36,9 @@ public class LeafArrayGenerator
 			
 			double midribLengthProportion,
 			double midribActualLength,
-			double midribOffsetProportion)
+			double midribOffsetProportion,
+			String primaryVeinsStyle,
+			double[] primaryVeinsParameters)
 	{
 		// initialize the leaf array
 		leafArray = new Boolean[height][width];
@@ -54,9 +56,11 @@ public class LeafArrayGenerator
 				this.leafArray,
 				midribLengthProportion,
 				midribActualLength,
-				midribOffsetProportion);
+				midribOffsetProportion,
+				primaryVeinsStyle);
 		
 		leafArray = veins.midrib.castMidrib(leafArray);
+		leafArray = veins.primaryVeins.castVeins(leafArray, primaryVeinsParameters, veins.midrib);
 	} // end LeafArrayGenerator constructor
 	
 	public void printBoolean()
@@ -76,12 +80,14 @@ public class LeafArrayGenerator
 	public class Veins
 	{
 		LeafArrayGenerator.Veins.Midrib midrib;
+		LeafArrayGenerator.Veins.PrimaryVeins primaryVeins;
 		
 		public Veins(
 				Boolean[][] leafArray,
 				double midribLengthProportion,
 				double midribActualLength,
-				double midribOffsetProportion)
+				double midribOffsetProportion,
+				String primaryVeinsStyle)
 		{
 			// create midrib
 			midrib = new LeafArrayGenerator.Veins.Midrib(
@@ -89,6 +95,11 @@ public class LeafArrayGenerator
 					midribActualLength,
 					(int) leafArray[0].length,
 					midribOffsetProportion);
+			
+			primaryVeins = new LeafArrayGenerator.Veins.PrimaryVeins(
+					leafArray, 
+					midrib.startOffset, 
+					primaryVeinsStyle);
 		} // end Veins
 
 		public class Midrib
@@ -192,11 +203,44 @@ public class LeafArrayGenerator
 									(i+1.0)*(midrib.length / ((float) numBranchingVeins))
 								);
 					} // end for loop
+					
+					// draw veins onto array
+					for (int i = 0; i < numBranchingVeins; i++)
+					{
+						int xStart = (int) (branchPositions[i]);
+						int yStart = leafArray[0].length/2;
+						
+						int xEnd = (int) (xStart + xUnit * branchLengths[i]);
+						// int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
+						int yEnd2 = (int) (yStart + yUnit * branchLengths[i]);
+						
+						for (int j = xStart; j < xEnd; j++)
+						{
+							int yDiff = Math.round(((float) yEnd2 - (float) yStart) * 
+									((float) j / (float) xEnd));
+							
+							// draw onto array
+							try
+							{
+								leafArray[yStart + yDiff][j] = true;
+							}
+							catch (ArrayIndexOutOfBoundsException ex)
+							{
+								ex.printStackTrace();
+							}	
+
+							try
+							{
+								leafArray[yStart - yDiff][j] = true;
+							}
+							catch (ArrayIndexOutOfBoundsException ex)
+							{
+								ex.printStackTrace();
+							}
+						} // end for i between endpoints
+					} // end for loop
+					
 				} // end if pinnate
-				
-				/**
-				 * USE POINT SLOPE FORM OR ONE OF THE VECTOR FORMS FOR THE EQUATION OF A LINE
-				 */
 				
 				return leafArray;
 			} // end castVeins

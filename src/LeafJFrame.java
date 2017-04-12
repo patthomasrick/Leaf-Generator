@@ -93,8 +93,23 @@ public class LeafJFrame
         /* Turn off metal's use of bold fonts */
         UIManager.put("swing.boldMetal", Boolean.FALSE);
         
-        LeafArrayGenerator arrayGen = new LeafArrayGenerator(50, 15,
-        		0.60, 30, 0.10);
+        
+        double[] primaryVeinsParameters = {
+        		2.0, 	// number of veins
+        		30.0, 	// angle of veins
+        		4.0, 	// length of vein 1
+        		3.0		// length of vein 2
+        		};
+        
+        LeafArrayGenerator arrayGen = new LeafArrayGenerator(
+        		50,		// width 
+        		15,		// height
+        		0.60, 	// midrib length proportion
+        		30, 	// midrib actual length (unused)
+        		0.10,	// midrib start offset proportion
+        		"pinnate",
+        		primaryVeinsParameters
+        		);
         arrayGen.printBoolean();
         
         //Schedule a job for the event dispatch thread:
