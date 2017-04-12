@@ -18,4 +18,5 @@ The program would be a generator for life-like tree leaf images. The leaves woul
 This program would have applications mainly limited to research. The main inspiration for this program is my science fair project, where it was eventually shown that I needed a high quantity of leaf images to improve the accuracy of the leaf-identification program. This program would allow me to program in species of leaves and then batch-create hundreds, perhaps even thousands of leaf images. Other research projects that involve computer vision could also perhaps benefit from this project. Additionally, the program's methods could perhaps be useful to graphic designers who need random leaves for their project. For example, the leaves could be used in a game to make trees look life-like.
 </p>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Leaf_morphology_no_title.png" alt="Leaf morphology">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Leaf_morphology_no_title.png">
+<p>Picture credits to Wikipedia. <a href="https://upload.wikimedia.org/wikipedia/commons/5/51/Leaf_morphology_no_title.png">https://upload.wikimedia.org/wikipedia/commons/5/51/Leaf_morphology_no_title.png</a><p>
