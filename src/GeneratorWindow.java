@@ -24,7 +24,8 @@ public class GeneratorWindow extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jSeparator3 = new javax.swing.JSeparator();
         popupMenu1 = new java.awt.PopupMenu();
@@ -71,7 +72,11 @@ public class GeneratorWindow extends javax.swing.JFrame {
         genOptsFileTypeComboBox = new javax.swing.JComboBox<>();
         genOptsPathLabel = new javax.swing.JLabel();
         genOptsPathField = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        genOptsNumLabel = new javax.swing.JLabel();
+        genOptsNumSpinner = new javax.swing.JSpinner();
+        progressBar = new javax.swing.JProgressBar();
+        startButton = new javax.swing.JButton();
+        progressLabel = new javax.swing.JLabel();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -120,8 +125,10 @@ public class GeneratorWindow extends javax.swing.JFrame {
 
         widthField.setText("1280");
         widthField.setToolTipText("The width of the image that will be generated");
-        widthField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        widthField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 widthFieldActionPerformed(evt);
             }
         });
@@ -139,8 +146,10 @@ public class GeneratorWindow extends javax.swing.JFrame {
         midribOffsetPropLabel.setText("Margin proportion");
 
         midribOffsetPropField.setText("Double between 0.0 and 1.0");
-        midribOffsetPropField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        midribOffsetPropField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 midribOffsetPropFieldActionPerformed(evt);
             }
         });
@@ -150,15 +159,19 @@ public class GeneratorWindow extends javax.swing.JFrame {
         maxVarLabel.setText("Right bound");
 
         midribLengthPropLB.setText("-0.10");
-        midribLengthPropLB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        midribLengthPropLB.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 midribLengthPropLBActionPerformed(evt);
             }
         });
 
         midribLengthPropRB.setText("0.10");
-        midribLengthPropRB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        midribLengthPropRB.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 midribLengthPropRBActionPerformed(evt);
             }
         });
@@ -178,23 +191,29 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pVNumVeinsField.setEditable(false);
         pVNumVeinsField.setText("Set using bounds");
         pVNumVeinsField.setToolTipText("The number of branching veins from the midrib on one side of the leaf");
-        pVNumVeinsField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pVNumVeinsField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pVNumVeinsFieldActionPerformed(evt);
             }
         });
 
         pVNumVeinsLB.setText("Integer");
-        pVNumVeinsLB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pVNumVeinsLB.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pVNumVeinsLBActionPerformed(evt);
             }
         });
 
         pVNumVeinsRB.setEditable(false);
         pVNumVeinsRB.setText("Integer");
-        pVNumVeinsRB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pVNumVeinsRB.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pVNumVeinsRBActionPerformed(evt);
             }
         });
@@ -202,8 +221,10 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pVAngleLabel.setText("Angle of veins");
 
         pVAngleField.setText("Degrees between 0 to 180");
-        pVAngleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pVAngleField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pVAngleFieldActionPerformed(evt);
             }
         });
@@ -215,8 +236,10 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pVVeinLengthsLabel.setText("Vein lengths");
 
         pVVeinLengthsField.setText("ex. 0.15,0.20,0.20,0.15");
-        pVVeinLengthsField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pVVeinLengthsField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pVVeinLengthsFieldActionPerformed(evt);
             }
         });
@@ -234,22 +257,19 @@ public class GeneratorWindow extends javax.swing.JFrame {
         genOptsPathLabel.setText("Output path");
 
         genOptsPathField.setText(System.getProperty("user.dir"));
-        genOptsPathField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        genOptsPathField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 genOptsPathFieldActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
+        genOptsNumLabel.setText("Number of images to generate");
+
+        startButton.setText("Start");
+
+        progressLabel.setText("Progress");
 
         javax.swing.GroupLayout pinnateTabLayout = new javax.swing.GroupLayout(pinnateTab);
         pinnateTab.setLayout(pinnateTabLayout);
@@ -258,62 +278,42 @@ public class GeneratorWindow extends javax.swing.JFrame {
             .addGroup(pinnateTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pinnateTabLayout.createSequentialGroup()
+                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                        .addComponent(genOptsNumLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(genOptsNumSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
                                 .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(midribLengthPropLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(midribOffsetPropLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(midribLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(pVNumVeinsLabel)
+                                    .addComponent(pVAngleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pVVeinLengthsLabel)
+                                    .addComponent(pVLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(midribOffsetPropField, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                    .addComponent(midribLengthPropField))
-                                .addGap(15, 15, 15)
-                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(minVarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(midribLengthPropLB)
-                                    .addComponent(midribMarginPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(maxVarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(midribLengthPropRB)
-                                    .addComponent(midribMarginPropRB))))
-                        .addGap(15, 15, 15))
-                    .addGroup(pinnateTabLayout.createSequentialGroup()
-                        .addComponent(jSeparator2)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pVNumVeinsLabel)
-                            .addComponent(pVAngleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pVVeinLengthsLabel)
-                            .addComponent(pVLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pVNumVeinsField)
-                            .addComponent(pVAngleField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pVVeinLengthsField, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(15, 15, 15)
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pinnateTabLayout.createSequentialGroup()
-                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(minVarLabelPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pVNumVeinsLB)
-                                    .addComponent(pVAngleLB, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(maxVarLabelPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pVNumVeinsRB)
-                                    .addComponent(pVAngleRB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(pVVeinLengthsInstructions))
-                        .addContainerGap())
-                    .addGroup(pinnateTabLayout.createSequentialGroup()
-                        .addComponent(jSeparator4)
-                        .addContainerGap())
-                    .addGroup(pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                                        .addComponent(pVVeinLengthsField)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pVVeinLengthsInstructions))
+                                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(pVNumVeinsField)
+                                            .addComponent(pVAngleField))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(pVNumVeinsLB, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(minVarLabelPV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(pVAngleLB))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(pVNumVeinsRB)
+                                            .addComponent(pVAngleRB)
+                                            .addComponent(maxVarLabelPV, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))))
+                            .addComponent(jSeparator4)
                             .addGroup(pinnateTabLayout.createSequentialGroup()
                                 .addComponent(genOptsPathLabel)
                                 .addGap(18, 18, 18)
@@ -332,10 +332,33 @@ public class GeneratorWindow extends javax.swing.JFrame {
                                         .addComponent(heightField, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(dimensionsLabel)
                                     .addComponent(genOptsLabel))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
+                                .addComponent(progressLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(startButton))
+                            .addGroup(pinnateTabLayout.createSequentialGroup()
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator1)
+                                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(midribLengthPropLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(midribOffsetPropLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(midribLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(midribOffsetPropField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                            .addComponent(midribLengthPropField))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minVarLabel)
+                                    .addComponent(midribMarginPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(midribLengthPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(maxVarLabel)
+                                    .addComponent(midribLengthPropRB)
+                                    .addComponent(midribMarginPropRB))))
                         .addContainerGap())))
         );
         pinnateTabLayout.setVerticalGroup(
@@ -344,56 +367,64 @@ public class GeneratorWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(dimensionsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxVarLabel)
-                            .addComponent(minVarLabel))
+                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pinnateTabLayout.createSequentialGroup()
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
+                                        .addComponent(maxVarLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(midribLengthPropRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(midribLengthPropField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
+                                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(widthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(heightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(multSignLabel))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(midribLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(midribLengthPropLabel)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(midribMarginPropRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(midribOffsetPropField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(midribOffsetPropLabel)))
+                            .addGroup(pinnateTabLayout.createSequentialGroup()
+                                .addComponent(minVarLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(midribLengthPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(midribMarginPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
+                                .addComponent(minVarLabelPV)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(pVNumVeinsLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pVNumVeinsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
+                                .addComponent(pVLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pVNumVeinsLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(midribLengthPropRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(midribLengthPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(midribLengthPropField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(widthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(heightField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(multSignLabel))
+                            .addComponent(pVAngleLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pVAngleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pVAngleLabel)))
+                    .addGroup(pinnateTabLayout.createSequentialGroup()
+                        .addComponent(maxVarLabelPV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pVNumVeinsRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(midribLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(midribLengthPropLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(midribMarginPropRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(midribMarginPropLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(midribOffsetPropField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(midribOffsetPropLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxVarLabelPV)
-                            .addComponent(minVarLabelPV))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pVNumVeinsRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pVNumVeinsLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pVNumVeinsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinnateTabLayout.createSequentialGroup()
-                        .addComponent(pVLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pVNumVeinsLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pVAngleRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pVAngleLB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pVAngleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pVAngleLabel))
+                        .addComponent(pVAngleRB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pVVeinLengthsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,7 +441,15 @@ public class GeneratorWindow extends javax.swing.JFrame {
                     .addComponent(genOptsFileTypeLabel)
                     .addComponent(genOptsFileTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genOptsNumLabel)
+                    .addComponent(genOptsNumSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addGroup(pinnateTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startButton)
+                    .addComponent(progressLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -442,6 +481,30 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void genOptsPathFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genOptsPathFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genOptsPathFieldActionPerformed
+
+    private void pVVeinLengthsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVVeinLengthsFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pVVeinLengthsFieldActionPerformed
+
+    private void pVAngleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVAngleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pVAngleFieldActionPerformed
+
+    private void pVNumVeinsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pVNumVeinsRBActionPerformed
+
+    private void pVNumVeinsLBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsLBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pVNumVeinsLBActionPerformed
+
+    private void pVNumVeinsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsFieldActionPerformed
+        pVNumVeinsLB.setText(pVNumVeinsField.getText());
+    }//GEN-LAST:event_pVNumVeinsFieldActionPerformed
+
     private void midribLengthPropRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_midribLengthPropRBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_midribLengthPropRBActionPerformed
@@ -457,30 +520,6 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private void widthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_widthFieldActionPerformed
-
-    private void pVNumVeinsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsRBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pVNumVeinsRBActionPerformed
-
-    private void pVAngleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVAngleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pVAngleFieldActionPerformed
-
-    private void pVNumVeinsLBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsLBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pVNumVeinsLBActionPerformed
-
-    private void pVNumVeinsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsFieldActionPerformed
-        pVNumVeinsLB.setText(pVNumVeinsField.getText()); 
-    }//GEN-LAST:event_pVNumVeinsFieldActionPerformed
-
-    private void pVVeinLengthsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVVeinLengthsFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pVVeinLengthsFieldActionPerformed
-
-    private void genOptsPathFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genOptsPathFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genOptsPathFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,20 +538,20 @@ public class GeneratorWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneratorWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeafJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneratorWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeafJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneratorWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeafJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneratorWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeafJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GeneratorWindow().setVisible(true);
+                new LeafJFrame().setVisible(true);
             }
         });
     }
@@ -522,13 +561,14 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> genOptsFileTypeComboBox;
     private javax.swing.JLabel genOptsFileTypeLabel;
     private javax.swing.JLabel genOptsLabel;
+    private javax.swing.JLabel genOptsNumLabel;
+    private javax.swing.JSpinner genOptsNumSpinner;
     private javax.swing.JTextField genOptsPathField;
     private javax.swing.JLabel genOptsPathLabel;
     private javax.swing.JTextField heightField;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -561,6 +601,9 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel pVVeinLengthsLabel;
     private javax.swing.JPanel pinnateTab;
     private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JProgressBar progressBar;
+    private javax.swing.JLabel progressLabel;
+    private javax.swing.JButton startButton;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JLabel tabsInstructionLabel;
     private javax.swing.JTextField widthField;
