@@ -1,3 +1,6 @@
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
 /*
  * LeafJFrame.java
  * 
@@ -17,7 +20,7 @@
  * to improve the accuracy of the leaf-identification program. This program would allow me to program in 
  * species of leaves and then batch-create hundreds, perhaps even thousands of leaf images. Other research 
  * projects that involve computer vision could also perhaps benefit from this project. Additionally, the 
- * program’s methods could perhaps be useful to graphic designers who need random leaves for their project.
+ * program's methods could perhaps be useful to graphic designers who need random leaves for their project.
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
@@ -29,6 +32,8 @@ public class LeafArrayGenerator
 {
 	public Boolean[][] leafArray;
 	public LeafArrayGenerator.Veins veins;
+	
+	double[] primaryVeinGenParams;
 	
 	public LeafArrayGenerator(
 			int width, 
@@ -42,6 +47,7 @@ public class LeafArrayGenerator
 	{
 		// initialize the leaf array
 		leafArray = new Boolean[height][width];
+		this.primaryVeinGenParams = primaryVeinsParameters;
 
 		for (int h = 0; h < leafArray.length; h += 1)
 		{
@@ -76,6 +82,23 @@ public class LeafArrayGenerator
 			System.out.print("\n");
 		} // end for h values
 	} // end printBoolean
+	
+	public BufferedImage createBufferedImage()
+	{
+		BufferedImage outputImage = new BufferedImage(
+				leafArray[0].length, 
+				leafArray.length, 
+				BufferedImage.TYPE_BYTE_BINARY);
+		
+		Graphics2D g2 = outputImage.createGraphics();
+		
+		int[][] midribData = this.veins.midrib.getMidribPoints(leafArray);
+		
+		g2.drawPolyline(midribData[0], midribData[1], midribData.length);
+		this.veins.primaryVeins.drawVeins(leafArray, this.primaryVeinGenParams, this.veins.midrib, g2);
+		
+		return outputImage;
+	} // end createBufferedImage
 	
 	public class Veins
 	{
@@ -145,7 +168,7 @@ public class LeafArrayGenerator
 						{
 							if (w > startX && w < endX)
 							{
-								leafArray[h][w] = true;
+								leafArray[h-1][w] = true;
 							} // end if width is good
 						} // end if height is good
 					} // end for w values
@@ -153,6 +176,17 @@ public class LeafArrayGenerator
 				
 				return leafArray;
 			} // end castMidrib
+			
+			public int[][] getMidribPoints(Boolean[][] leafArray)
+			{
+				int height = leafArray.length/2;
+				int startX = this.startOffset;
+				int endX = this.startOffset + this.length;
+				
+				int[][] output = {{startX, endX}, {height, height}};
+				
+				return output;
+			} // end getMidribPoints
 		} // end midrib
 		
 		public class PrimaryVeins
@@ -183,9 +217,9 @@ public class LeafArrayGenerator
 				{
 					/*
 					 * Generation parameters:
-					 * 1:	Number of branching veins on each side
-					 * 2:	Angle (in degrees) of the branching veins
-					 * 3+:	Lengths of the veins for each vein
+					 * 0:	Number of branching veins on each side
+					 * 1:	Angle (in degrees) of the branching veins
+					 * 2+:	Lengths of the veins for each vein
 					 */
 					int numBranchingVeins = (int) generationParameters[0];
 					double[] branchPositions = new double[numBranchingVeins];
@@ -196,28 +230,36 @@ public class LeafArrayGenerator
 					
 					for (int i = 0; i < numBranchingVeins; i++)
 					{
-						branchLengths[i] = generationParameters[i+2];
+						branchLengths[i] = generationParameters[i+2]*midrib.length;
 						
 						branchPositions[i] = midrib.startOffset + 
 								(
-									(i+1.0)*(midrib.length / ((float) numBranchingVeins))
+									// (i+1.0)*(midrib.length / ((float) (numBranchingVeins)))
+									(midrib.length / ((float) (numBranchingVeins + 1))) * (i + 1)
 								);
 					} // end for loop
 					
 					// draw veins onto array
 					for (int i = 0; i < numBranchingVeins; i++)
 					{
-						int xStart = (int) (branchPositions[i]);
-						int yStart = leafArray[0].length/2;
+						int xStart = (int) Math.round(branchPositions[i]);
+						int yStart = leafArray.length/2;
 						
-						int xEnd = (int) (xStart + xUnit * branchLengths[i]);
+						int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
 						// int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
-						int yEnd2 = (int) (yStart + yUnit * branchLengths[i]);
+						// int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
+						
+						System.out.println(i + " of " + numBranchingVeins);
 						
 						for (int j = xStart; j < xEnd; j++)
 						{
-							int yDiff = Math.round(((float) yEnd2 - (float) yStart) * 
+							int yDiff = (int) Math.round(yUnit * branchLengths[i] * 
+									((float) j - xStart)/((float) xEnd - xStart));
+									/*Math.round(((float) yEnd2 - (float) yStart) * 
 									((float) j / (float) xEnd));
+							*/
+							System.out.println("(" + j + ", " + (yStart - yDiff) + ")");
+							System.out.println("(" + j + ", " + (yStart + yDiff) + ")");
 							
 							// draw onto array
 							try
@@ -238,6 +280,58 @@ public class LeafArrayGenerator
 								ex.printStackTrace();
 							}
 						} // end for i between endpoints
+					} // end for loop
+					
+				} // end if pinnate
+				
+				return leafArray;
+			} // end castVeins
+			
+			public Boolean[][] drawVeins(
+					Boolean[][] leafArray, 
+					double[] generationParameters, 
+					LeafArrayGenerator.Veins.Midrib midrib,
+					Graphics2D g2)
+			{
+				// choose style
+				if (style == "pinnate")
+				{
+					/*
+					 * Generation parameters:
+					 * 0:	Number of branching veins on each side
+					 * 1:	Angle (in degrees) of the branching veins
+					 * 2+:	Lengths of the veins for each vein
+					 */
+					int numBranchingVeins = (int) generationParameters[0];
+					double[] branchPositions = new double[numBranchingVeins];
+					double angleOfVeins = generationParameters[1];
+					double xUnit = Math.cos(Math.toRadians(angleOfVeins));
+					double yUnit = Math.sin(Math.toRadians(angleOfVeins));
+					double[] branchLengths = new double[numBranchingVeins];
+					
+					for (int i = 0; i < numBranchingVeins; i++)
+					{
+						branchLengths[i] = generationParameters[i+2]*midrib.length;
+						
+						branchPositions[i] = midrib.startOffset + 
+								(
+									// (i+1.0)*(midrib.length / ((float) (numBranchingVeins)))
+									(midrib.length / ((float) (numBranchingVeins + 1))) * (i + 1)
+								);
+					} // end for loop
+					
+					// draw veins onto array
+					for (int i = 0; i < numBranchingVeins; i++)
+					{
+						int xStart = (int) Math.round(branchPositions[i]);
+						int yStart = leafArray.length/2;
+						
+						int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
+						int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
+						int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
+						
+						g2.drawLine(xEnd, yEnd1, xStart, yStart);
+						g2.drawLine(xStart, yStart, xEnd, yEnd2);
 					} // end for loop
 					
 				} // end if pinnate

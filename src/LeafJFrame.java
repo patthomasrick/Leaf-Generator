@@ -17,12 +17,20 @@
  * to improve the accuracy of the leaf-identification program. This program would allow me to program in 
  * species of leaves and then batch-create hundreds, perhaps even thousands of leaf images. Other research 
  * projects that involve computer vision could also perhaps benefit from this project. Additionally, the 
- * program’s methods could perhaps be useful to graphic designers who need random leaves for their project.
+ * program's methods could perhaps be useful to graphic designers who need random leaves for their project.
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
 // import statements
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class LeafJFrame
@@ -45,16 +53,21 @@ public class LeafJFrame
             }
         };
         instructions.add(new JLabel("Instructions are here"));
+        
+        JPanel inputPanel = new JPanel();
+        JLabel angleLabel = new JLabel("Angle of primary veins: ");
+        JTextField angleIn = new JTextField(20);
+        
+        inputPanel.add(angleIn);
     	
         // create the button panel
         JPanel buttonPanel = new JPanel();
         
-        buttonPanel.add(new JButton("Button 1"));
-        buttonPanel.add(new JButton("Button 2"));
-        buttonPanel.add(new JButton("Button 3"));
+        buttonPanel.add(new JButton("Create Image"));
 
         pane.add(instructions, BorderLayout.PAGE_START);
-        pane.add(buttonPanel, BorderLayout.CENTER);
+        pane.add(inputPanel);
+        pane.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     /**
@@ -77,6 +90,19 @@ public class LeafJFrame
     }
 
     public static void main(String[] args) {
+    	// run output to file
+    	PrintStream out;
+		try
+		{
+			out = new PrintStream(new FileOutputStream("output.txt"));
+	    	System.setOut(out);
+		} 
+		catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
         /* Use an appropriate Look and Feel */
         try {
             // UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -95,22 +121,38 @@ public class LeafJFrame
         
         
         double[] primaryVeinsParameters = {
-        		2.0, 	// number of veins
-        		30.0, 	// angle of veins
-        		4.0, 	// length of vein 1
-        		3.0		// length of vein 2
+        		4.0, 	// number of veins
+        		60.0, 	// angle of veins
+        		0.15, 	// length of vein 1
+        		0.23,	// length of vein 2
+        		0.30, 	// length of vein 1
+        		0.25	// length of vein 2
         		};
         
         LeafArrayGenerator arrayGen = new LeafArrayGenerator(
-        		50,		// width 
-        		15,		// height
-        		0.60, 	// midrib length proportion
+        		1200,		// width 
+        		900,		// height
+        		0.70, 	// midrib length proportion
         		30, 	// midrib actual length (unused)
         		0.10,	// midrib start offset proportion
         		"pinnate",
         		primaryVeinsParameters
         		);
+        
         arrayGen.printBoolean();
+        
+        // try to create and save the image
+        try 
+        {
+            // retrieve image
+            BufferedImage bi = arrayGen.createBufferedImage();
+            File outputFile = new File("saved.png");
+            ImageIO.write(bi, "png", outputFile);
+        } // end try
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        } // end catch
         
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
