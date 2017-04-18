@@ -1,6 +1,3 @@
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-
 /*
  * LeafJFrame.java
  * 
@@ -23,6 +20,9 @@ import java.awt.image.BufferedImage;
  * program's methods could perhaps be useful to graphic designers who need random leaves for their project.
  * For example, the leaves could be used in a game to make trees look life-like.
  */
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Generates an array that displays a leaf

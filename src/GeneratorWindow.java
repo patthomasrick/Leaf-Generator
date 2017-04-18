@@ -1,3 +1,9 @@
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -142,6 +148,13 @@ public class GeneratorWindow extends javax.swing.JFrame {
 
         midribLengthPropField.setText("Double between 0.0 and 1.0");
         midribLengthPropField.setToolTipText("Length of the midrib in respect to the width of the image");
+        midribLengthPropField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                midribLengthPropFieldActionPerformed(evt);
+            }
+        });
 
         midribOffsetPropLabel.setText("Margin proportion");
 
@@ -268,6 +281,13 @@ public class GeneratorWindow extends javax.swing.JFrame {
         genOptsNumLabel.setText("Number of images to generate");
 
         startButton.setText("Start");
+        startButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                startButtonActionPerformed(evt);
+            }
+        });
 
         progressLabel.setText("Progress");
 
@@ -520,6 +540,48 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private void widthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_widthFieldActionPerformed
+
+    private void midribLengthPropFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_midribLengthPropFieldActionPerformed
+    {//GEN-HEADEREND:event_midribLengthPropFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_midribLengthPropFieldActionPerformed
+
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_startButtonActionPerformed
+    {//GEN-HEADEREND:event_startButtonActionPerformed
+        double[] primaryVeinsParameters = {
+                    4.0, 	// number of veins
+                    60.0, 	// angle of veins
+                    0.15, 	// length of vein 1
+                    0.23,	// length of vein 2
+                    0.30, 	// length of vein 1
+                    0.25	// length of vein 2
+                    };
+        
+        LeafArrayGenerator arrayGen = new LeafArrayGenerator(
+        		1200,		// width 
+        		900,		// height
+        		0.70, 	// midrib length proportion
+        		30, 	// midrib actual length (unused)
+        		0.10,	// midrib start offset proportion
+        		"pinnate",
+        		primaryVeinsParameters
+        		);
+        
+        
+        try 
+        {
+            // retrieve image
+            BufferedImage bi = arrayGen.createBufferedImage();
+            File outputFile;
+            outputFile = new File("saved.png");
+            ImageIO.write(bi, "png", outputFile);
+        } // end try
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        } // end catch
+        
+    }//GEN-LAST:event_startButtonActionPerformed
 
     /**
      * @param args the command line arguments
