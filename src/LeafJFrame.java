@@ -629,12 +629,12 @@ public class LeafJFrame extends javax.swing.JFrame
 	        		Integer.parseInt(widthField.getText()),				// width 
 	        		Integer.parseInt(heightField.getText()),			// height
 	        		Double.parseDouble(midribLengthPropField.getText())
-        			* midribLengthPropMult, 	// midrib length proportion
+        			* midribLengthPropMult, 							// midrib length proportion
 	        		1, 													// midrib actual length (unused)
 	        		Double.parseDouble(midribOffsetPropField.getText())
-        			* midribMarginPropMult,	// midrib start offset proportion
+        			* midribMarginPropMult,								// midrib start offset proportion
 	        		"pinnate",
-	        		primaryVeinsParameters
+	        		primaryVeinsParameters								// parameters for the primary veins as previously defined
 	        		);
 	        
 	        

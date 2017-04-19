@@ -265,20 +265,20 @@ public class LeafArrayGenerator
 							try
 							{
 								leafArray[yStart + yDiff][j] = true;
-							}
+							} // end try
 							catch (ArrayIndexOutOfBoundsException ex)
 							{
 								ex.printStackTrace();
-							}	
+							} // end catch out of index
 
 							try
 							{
 								leafArray[yStart - yDiff][j] = true;
-							}
+							} // end try
 							catch (ArrayIndexOutOfBoundsException ex)
 							{
 								ex.printStackTrace();
-							}
+							} // end catch out of index
 						} // end for i between endpoints
 					} // end for loop
 					
