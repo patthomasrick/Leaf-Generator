@@ -1,3 +1,5 @@
+package Generator;
+
 /*
  * LeafJFrame.java
  *
