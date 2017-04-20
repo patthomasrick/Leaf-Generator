@@ -40,6 +40,9 @@ public class LeafGenerator extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         tabsInstructionLabel = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         pinnateTab = new javax.swing.JPanel();
@@ -86,6 +89,12 @@ public class LeafGenerator extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         progressLabel = new javax.swing.JLabel();
         pinnateResetButton = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        FileMenu = new javax.swing.JMenu();
+        EditMenu = new javax.swing.JMenu();
+        ToolMenu = new javax.swing.JMenu();
+        setToDefaults = new javax.swing.JMenuItem();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -121,6 +130,12 @@ public class LeafGenerator extends javax.swing.JFrame {
             jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -502,6 +517,29 @@ public class LeafGenerator extends javax.swing.JFrame {
         pinnateTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pVAngleField, pVNumVeinsField, pVVeinLengthsField});
 
         tabs.addTab("Pinnately Veined", pinnateTab);
+        tabs.addTab("tab2", jTabbedPane1);
+
+        FileMenu.setText("File");
+        jMenuBar2.add(FileMenu);
+
+        EditMenu.setText("Edit");
+        jMenuBar2.add(EditMenu);
+
+        ToolMenu.setText("Tools");
+
+        setToDefaults.setText("Set all fields to example values");
+        setToDefaults.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                setToDefaultsActionPerformed(evt);
+            }
+        });
+        ToolMenu.add(setToDefaults);
+
+        jMenuBar2.add(ToolMenu);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -718,6 +756,14 @@ public class LeafGenerator extends javax.swing.JFrame {
         
     }//GEN-LAST:event_pinnateResetButtonActionPerformed
 
+    private void setToDefaultsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_setToDefaultsActionPerformed
+    {//GEN-HEADEREND:event_setToDefaultsActionPerformed
+        if (tabs.getSelectedComponent() == pinnateTab)
+        {
+            pinnateResetButtonActionPerformed(null);
+        } // end if the selected tab is the pinnate tab
+    }//GEN-LAST:event_setToDefaultsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -754,6 +800,9 @@ public class LeafGenerator extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu EditMenu;
+    private javax.swing.JMenu FileMenu;
+    private javax.swing.JMenu ToolMenu;
     private javax.swing.JLabel dimensionsLabel;
     private javax.swing.JComboBox<String> genOptsFileTypeComboBox;
     private javax.swing.JLabel genOptsFileTypeLabel;
@@ -766,10 +815,15 @@ public class LeafGenerator extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel maxVarLabel;
     private javax.swing.JLabel maxVarLabelPV;
     private javax.swing.JLabel midribLabel;
@@ -801,6 +855,7 @@ public class LeafGenerator extends javax.swing.JFrame {
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel progressLabel;
+    private javax.swing.JMenuItem setToDefaults;
     private javax.swing.JButton startButton;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JLabel tabsInstructionLabel;
