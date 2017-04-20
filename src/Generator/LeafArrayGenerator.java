@@ -22,7 +22,6 @@ package Generator;
  * program's methods could perhaps be useful to graphic designers who need random leaves for their project.
  * For example, the leaves could be used in a game to make trees look life-like.
  */
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -97,7 +96,7 @@ public class LeafArrayGenerator
         BufferedImage outputImage = new BufferedImage(
                 leafArray[0].length,
                 leafArray.length,
-                BufferedImage.TYPE_BYTE_BINARY);
+                BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g2 = outputImage.createGraphics();
 
@@ -154,6 +153,8 @@ public class LeafArrayGenerator
              * the length of the actual image
              * @param actualLength The midrib's length in any unit
              * @param arrayWidth The width of the array
+             * @param startOffsetProportion How far the midrib starts from the 
+             * edge of the image
              */
             public Midrib(double lengthProportion, double actualLength, int arrayWidth,
                     double startOffsetProportion)
@@ -169,6 +170,7 @@ public class LeafArrayGenerator
             /**
              * Takes the current midrib parameters and prints them on top of a
              * given array.
+             *
              * @param leafArray Array to edit
              * @return Edited array
              */
@@ -205,7 +207,7 @@ public class LeafArrayGenerator
                 {
                     {
                         startX, endX
-                    }, 
+                    },
                     {
                         height, height
                     }
@@ -239,7 +241,7 @@ public class LeafArrayGenerator
                     LeafArrayGenerator.Veins.Midrib midrib)
             {
                 // choose style
-                if (style == "pinnate")
+                if ("pinnate".equals(style))
                 {
                     /*
 					 * Generation parameters:
@@ -281,19 +283,13 @@ public class LeafArrayGenerator
                             {
                                 leafArray[yStart + yDiff][j] = true;
                             } // end try
-                            catch (ArrayIndexOutOfBoundsException ex)
-                            {
-                                ex.printStackTrace();
-                            } // end catch out of index
+                            catch (ArrayIndexOutOfBoundsException ex) {}
 
                             try
                             {
                                 leafArray[yStart - yDiff][j] = true;
                             } // end try
-                            catch (ArrayIndexOutOfBoundsException ex)
-                            {
-                                ex.printStackTrace();
-                            } // end catch out of index
+                            catch (ArrayIndexOutOfBoundsException ex) {} // end catch out of index
                         } // end for i between endpoints
                     } // end for loop
 
@@ -309,7 +305,7 @@ public class LeafArrayGenerator
                     Graphics2D g2)
             {
                 // choose style
-                if (style == "pinnate")
+                if ("pinnate".equals(style))
                 {
                     /*
 					 * Generation parameters:
@@ -342,7 +338,7 @@ public class LeafArrayGenerator
                         int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
                         int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
                         int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
-                        
+
                         g2.setColor(Color.WHITE);
                         g2.drawLine(xEnd, yEnd1, xStart, yStart);
                         g2.drawLine(xStart, yStart, xEnd, yEnd2);
