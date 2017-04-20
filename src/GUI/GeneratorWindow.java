@@ -92,7 +92,7 @@ public class GeneratorWindow extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         progressLabel = new javax.swing.JLabel();
         pinnateResetButton = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        parallelVeins = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         fileExitMenuItem = new javax.swing.JMenuItem();
@@ -521,7 +521,19 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pinnateTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {pVAngleField, pVNumVeinsField, pVVeinLengthsField});
 
         tabs.addTab("Pinnately Veined", pinnateTab);
-        tabs.addTab("tab2", jTabbedPane1);
+
+        javax.swing.GroupLayout parallelVeinsLayout = new javax.swing.GroupLayout(parallelVeins);
+        parallelVeins.setLayout(parallelVeinsLayout);
+        parallelVeinsLayout.setHorizontalGroup(
+            parallelVeinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 552, Short.MAX_VALUE)
+        );
+        parallelVeinsLayout.setVerticalGroup(
+            parallelVeinsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 607, Short.MAX_VALUE)
+        );
+
+        tabs.addTab("Parallel Veins", parallelVeins);
 
         FileMenu.setText("File");
 
@@ -538,6 +550,7 @@ public class GeneratorWindow extends javax.swing.JFrame {
         jMenuBar2.add(FileMenu);
 
         EditMenu.setText("Edit");
+        EditMenu.setEnabled(false);
         jMenuBar2.add(EditMenu);
 
         ToolMenu.setText("Tools");
@@ -595,11 +608,12 @@ public class GeneratorWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_pVNumVeinsRBActionPerformed
 
     private void pVNumVeinsLBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsLBActionPerformed
-        pVNumVeinsRB.setText(pVNumVeinsLB.getText());
+        // TODO
     }//GEN-LAST:event_pVNumVeinsLBActionPerformed
 
     private void pVNumVeinsFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pVNumVeinsFieldActionPerformed
         pVNumVeinsLB.setText(pVNumVeinsField.getText());
+        pVNumVeinsRB.setText(pVNumVeinsLB.getText());
     }//GEN-LAST:event_pVNumVeinsFieldActionPerformed
 
     private void midribLengthPropRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_midribLengthPropRBActionPerformed
@@ -768,7 +782,6 @@ public class GeneratorWindow extends javax.swing.JFrame {
         pVNumVeinsLB.setText(Double.toString(pVNumber));
         pVVeinLengthsField.setText(pVLengths);
         genOptsNumSpinner.setValue((int) 1);
-        
     }//GEN-LAST:event_pinnateResetButtonActionPerformed
 
     private void setToDefaultsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_setToDefaultsActionPerformed
@@ -846,7 +859,6 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel maxVarLabel;
     private javax.swing.JLabel maxVarLabelPV;
     private javax.swing.JLabel midribLabel;
@@ -873,6 +885,7 @@ public class GeneratorWindow extends javax.swing.JFrame {
     private javax.swing.JTextField pVVeinLengthsField;
     private javax.swing.JLabel pVVeinLengthsInstructions;
     private javax.swing.JLabel pVVeinLengthsLabel;
+    private javax.swing.JPanel parallelVeins;
     private javax.swing.JButton pinnateResetButton;
     private javax.swing.JPanel pinnateTab;
     private java.awt.PopupMenu popupMenu1;
