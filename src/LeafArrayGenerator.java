@@ -21,6 +21,7 @@
  * For example, the leaves could be used in a game to make trees look life-like.
  */
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -163,6 +164,12 @@ public class LeafArrayGenerator
                 this.startOffset = (int) (this.startOffsetProportion * arrayWidth);
             } // end Midrib constructor
 
+            /**
+             * Takes the current midrib parameters and prints them on top of a
+             * given array.
+             * @param leafArray Array to edit
+             * @return Edited array
+             */
             public Boolean[][] castMidrib(Boolean[][] leafArray)
             {
                 int height = leafArray.length / 2;
@@ -261,10 +268,6 @@ public class LeafArrayGenerator
                         int yStart = leafArray.length / 2;
 
                         int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
-                        // int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
-                        // int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
-
-                        System.out.println(i + " of " + numBranchingVeins);
 
                         for (int j = xStart; j < xEnd; j++)
                         {
@@ -337,7 +340,8 @@ public class LeafArrayGenerator
                         int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
                         int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
                         int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
-
+                        
+                        g2.setColor(Color.WHITE);
                         g2.drawLine(xEnd, yEnd1, xStart, yStart);
                         g2.drawLine(xStart, yStart, xEnd, yEnd2);
                     } // end for loop
