@@ -723,18 +723,22 @@ public class GeneratorWindow extends javax.swing.JFrame {
                             pVParameters
                             );
 
-
+            progressBar.setMinimum(0);
+            progressBar.setMaximum(i);
+            progressBar.setValue(0);
             try 
             {
                 // retrieve image
                 BufferedImage bi = arrayGen.createBufferedImage();
                 File outputFile;
-                outputFile = new File("saved" + (i+1) + ".png");
+                System.out.println("Saving to " + genOptsPathField.getText() + "\\saved" + (i+1) + ".png");
+                outputFile = new File(genOptsPathField.getText() + "\\saved" + (i+1) + ".png");
                 ImageIO.write(
                         bi, 
                         (String) genOptsFileTypeComboBox.getSelectedItem(), 
                         outputFile
                 );
+                progressBar.setValue(i);
             } // end try
             catch (IOException e)
             {
@@ -757,7 +761,7 @@ public class GeneratorWindow extends javax.swing.JFrame {
         double[] midribOffsetPropBounds = {-0.1, 0.1};
         
         // primary veins
-        String pVLengths = "0.15,0.17,0.21,0.18";
+        String pVLengths = "0.15,0.27,0.31,0.22";
         double pVNumber = 4.0;
         double pVAngle = 45.0;
         double[] pVAngleBounds  = {-0.1, 0.1};
