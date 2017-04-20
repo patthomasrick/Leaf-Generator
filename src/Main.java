@@ -33,7 +33,7 @@
 //import javax.imageio.ImageIO;
 //import javax.swing.*;
 
-import GUI.LeafGenerator;
+import GUI.GeneratorWindow;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +51,7 @@ import javax.imageio.ImageIO;
  *
  * @author pthom
  */
-public class Main extends GUI.LeafGenerator 
+public class Main extends GUI.GeneratorWindow 
 {
     public Main() {
         super();
