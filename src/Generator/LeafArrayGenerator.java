@@ -39,6 +39,19 @@ public class LeafArrayGenerator
 
     double[] primaryVeinGenParams;
 
+    /**
+     * Constructor for LeafArrayGenerator
+     * @param width width of the resultant image
+     * @param height height of the resultant image
+     * @param midribLengthProportion how long the midrib is compared to the
+     * width of the image
+     * @param midribActualLength how long the midrib is supposed to be in units
+     * of your choice
+     * @param midribOffsetProportion how far the midrib is from the edge of the
+     * image
+     * @param primaryVeinsStyle the style of the primary veins
+     * @param primaryVeinsParameters the parameters of the primary veins
+     */
     public LeafArrayGenerator(
             int width,
             int height,
@@ -72,6 +85,9 @@ public class LeafArrayGenerator
         leafArray = veins.primaryVeins.castVeins(leafArray, primaryVeinsParameters, veins.midrib);
     } // end LeafArrayGenerator constructor
 
+    /**
+     * Print the leaf array in text form to sysout
+     */
     public void printBoolean()
     {
         for (int h = 0; h < leafArray.length; h += 1)
@@ -102,6 +118,7 @@ public class LeafArrayGenerator
 
         int[][] midribData = this.veins.midrib.getMidribPoints(leafArray);
 
+        g2.setColor(Color.RED);
         g2.drawPolyline(midribData[0], midribData[1], midribData.length);
         this.veins.primaryVeins.drawVeins(leafArray, this.primaryVeinGenParams, this.veins.midrib, g2);
 
@@ -339,7 +356,7 @@ public class LeafArrayGenerator
                         int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
                         int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
 
-                        g2.setColor(Color.WHITE);
+                        g2.setColor(Color.BLUE);
                         g2.drawLine(xEnd, yEnd1, xStart, yStart);
                         g2.drawLine(xStart, yStart, xEnd, yEnd2);
                     } // end for loop
