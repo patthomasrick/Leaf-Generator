@@ -31,11 +31,11 @@ import java.awt.image.BufferedImage;
  *
  * @author Patrick Thomas
  */
-public class LeafArrayGenerator
+public class Generator
 {
 
     public Boolean[][] leafArray;
-    public LeafArrayGenerator.Veins veins;
+    public Generator.Veins veins;
 
     double[] primaryVeinGenParams;
 
@@ -52,7 +52,7 @@ public class LeafArrayGenerator
      * @param primaryVeinsStyle the style of the primary veins
      * @param primaryVeinsParameters the parameters of the primary veins
      */
-    public LeafArrayGenerator(
+    public Generator(
             int width,
             int height,
             double midribLengthProportion,
@@ -74,7 +74,7 @@ public class LeafArrayGenerator
         } // end for h values
 
         // create the vein structures
-        veins = new LeafArrayGenerator.Veins(
+        veins = new Generator.Veins(
                 this.leafArray,
                 midribLengthProportion,
                 midribActualLength,
@@ -128,8 +128,8 @@ public class LeafArrayGenerator
     public class Veins
     {
 
-        LeafArrayGenerator.Veins.Midrib midrib;
-        LeafArrayGenerator.Veins.PrimaryVeins primaryVeins;
+        Generator.Veins.Midrib midrib;
+        Generator.Veins.PrimaryVeins primaryVeins;
 
         public Veins(
                 Boolean[][] leafArray,
@@ -139,13 +139,13 @@ public class LeafArrayGenerator
                 String primaryVeinsStyle)
         {
             // create midrib
-            midrib = new LeafArrayGenerator.Veins.Midrib(
+            midrib = new Generator.Veins.Midrib(
                     midribLengthProportion,
                     midribActualLength,
                     (int) leafArray[0].length,
                     midribOffsetProportion);
 
-            primaryVeins = new LeafArrayGenerator.Veins.PrimaryVeins(
+            primaryVeins = new Generator.Veins.PrimaryVeins(
                     leafArray,
                     midrib.startOffset,
                     primaryVeinsStyle);
@@ -255,7 +255,7 @@ public class LeafArrayGenerator
             public Boolean[][] castVeins(
                     Boolean[][] leafArray,
                     double[] generationParameters,
-                    LeafArrayGenerator.Veins.Midrib midrib)
+                    Generator.Veins.Midrib midrib)
             {
                 // choose style
                 if ("pinnate".equals(style))
@@ -318,7 +318,7 @@ public class LeafArrayGenerator
             public Boolean[][] drawVeins(
                     Boolean[][] leafArray,
                     double[] generationParameters,
-                    LeafArrayGenerator.Veins.Midrib midrib,
+                    Generator.Veins.Midrib midrib,
                     Graphics2D g2)
             {
                 // choose style
@@ -367,4 +367,26 @@ public class LeafArrayGenerator
             } // end castVeins
         } // end PrimaryVeins
     } // end Veins
+    
+    public class Lamina
+    {
+        // extra layer to differentiate between leaf blade and veins
+        public boolean[][] laminaArray;
+        
+        // variables to store from superclass and such
+        private Boolean[][] leafArray;
+        private Generator.Veins.Midrib midrib;
+        private String style;
+        private double[] args;
+        
+        public Lamina(Boolean[][] leafArray, Generator.Veins.Midrib midrib, 
+                String style, double[] args)
+        {
+            // stored variables from constructor
+            this.leafArray = leafArray;
+            this.midrib = midrib;
+            this.style = style;
+            this.args = args;
+        } // end constructor
+    } // end class Lamina
 } // end LeafArrayGenerator

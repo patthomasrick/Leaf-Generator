@@ -1,6 +1,6 @@
 package GUI;
 
-import Generator.LeafArrayGenerator;
+import Generator.Generator;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -711,14 +711,14 @@ public class GeneratorWindow extends javax.swing.JFrame {
                 );
             } // end for loop
 
-            LeafArrayGenerator arrayGen = new LeafArrayGenerator(
+            Generator arrayGen = new Generator(
                             width,		// width 
                             height,		// height
                             midribLenProp * midribLenPropMult, 	
                                                 // midrib length proportion
                             1,                  // midrib actual length (unused)
-                            midribOffsetProp * midribOffsetPropMult,	
-                                                // midrib start offset proportion
+                            midribOffsetProp * midribOffsetPropMult, // midrib 
+                                                     //start offset proportion
                             "pinnate",
                             pVParameters
                             );
