@@ -36,6 +36,7 @@ public class Generator
 
     public Boolean[][] leafArray;
     public Generator.Veins veins;
+    public Generator.Lamina lamina;
 
     double[] primaryVeinGenParams;
 
@@ -53,13 +54,19 @@ public class Generator
      * @param primaryVeinsParameters the parameters of the primary veins
      */
     public Generator(
+            // image
             int width,
             int height,
+            // midrib
             double midribLengthProportion,
             double midribActualLength,
             double midribOffsetProportion,
+            // primary veins
             String primaryVeinsStyle,
-            double[] primaryVeinsParameters)
+            double[] primaryVeinsParameters,
+            // lamina
+            String laminaStyle,
+            double[] laminaArgs)
     {
         // initialize the leaf array
         leafArray = new Boolean[height][width];
@@ -80,13 +87,21 @@ public class Generator
                 midribActualLength,
                 midribOffsetProportion,
                 primaryVeinsStyle);
+        
+        // create lamina
+        this.lamina = new Generator.Lamina(
+                leafArray, 
+                this.veins.midrib, 
+                laminaStyle, 
+                laminaArgs
+        );
 
         leafArray = veins.midrib.castMidrib(leafArray);
         leafArray = veins.primaryVeins.castVeins(leafArray, primaryVeinsParameters, veins.midrib);
     } // end LeafArrayGenerator constructor
 
     /**
-     * Print the leaf array in text form to sysout
+     * Print the leaf array in text form to sys out
      */
     public void printBoolean()
     {
@@ -118,9 +133,20 @@ public class Generator
 
         int[][] midribData = this.veins.midrib.getMidribPoints(leafArray);
 
+        // draw midrib
         g2.setColor(Color.RED);
         g2.drawPolyline(midribData[0], midribData[1], midribData.length);
-        this.veins.primaryVeins.drawVeins(leafArray, this.primaryVeinGenParams, this.veins.midrib, g2);
+        
+        // draw primary veins
+        this.veins.primaryVeins.drawVeins(leafArray, 
+                this.primaryVeinGenParams, 
+                this.veins.midrib, 
+                this.lamina,
+                g2);
+        
+        // draw margin of lamina
+        g2.setColor(Color.GREEN);
+        this.lamina.styles.drawLinear(g2);
 
         return outputImage;
     } // end createBufferedImage
@@ -319,6 +345,7 @@ public class Generator
                     Boolean[][] leafArray,
                     double[] generationParameters,
                     Generator.Veins.Midrib midrib,
+                    Lamina lamina,
                     Graphics2D g2)
             {
                 // choose style
@@ -372,6 +399,7 @@ public class Generator
     {
         // extra layer to differentiate between leaf blade and veins
         public boolean[][] laminaArray;
+        public Generator.Lamina.Styles styles;
         
         // variables to store from superclass and such
         private Boolean[][] leafArray;
@@ -387,6 +415,91 @@ public class Generator
             this.midrib = midrib;
             this.style = style;
             this.args = args;
+            
+            styles = new Generator.Lamina.Styles();
         } // end constructor
+        
+        private class Styles
+        {
+            public void drawLinear(Graphics2D g2)
+            {
+                double breadth = args[0]*leafArray.length;
+                double[] middleSection = {args[1], args[2]};
+                /*
+                Equation for an ellipse:
+                x - x value
+                y - y value
+                h - h^2 is radius of ellipse on x axis
+                k - k^2 is radius of ellipse on y axis
+                y=-(k*sqrt(h^2-(x-h)^2))/h,y=(k*sqrt(h^2-(x-h)^2))/h
+                */
+                
+                int riseLength = (int) (middleSection[0] * midrib.length);
+                int fallLength = (int) ((1-middleSection[1]) * midrib.length);
+                
+                int distMarginToFall = (int) (midrib.startOffset + 
+                        middleSection[1] * midrib.length);
+                
+                EllipseMath.Ellipse rise = new EllipseMath.Ellipse(
+                        riseLength,
+                        breadth / 2.0
+                );
+                
+                EllipseMath.Ellipse fall = new EllipseMath.Ellipse(
+                        fallLength,
+                        breadth / 2.0
+                );
+                
+                // draw the flat, linear sides of the leaf
+                // bottom
+                g2.drawLine(
+                        (int) (midrib.startOffset + midrib.length * middleSection[0]),
+                        (int) (leafArray.length/2 + breadth/2),
+                        (int) (midrib.startOffset + midrib.length * middleSection[1]),
+                        (int) (leafArray.length/2 + breadth/2)
+                );
+                // top
+                g2.drawLine(
+                        (int) (midrib.startOffset + midrib.length * middleSection[0]),
+                        (int) (leafArray.length/2 - breadth/2),
+                        (int) (midrib.startOffset + midrib.length * middleSection[1]),
+                        (int) (leafArray.length/2 - breadth/2)
+                );
+                
+                // draw rise curve
+                for (double d = rise.getBounds()[0]+1; d < 0.0; d += 1.0)
+                {
+                    g2.drawLine(
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0]-1.0)),
+                            (int) (leafArray.length/2 - rise.getValueAtX(d-1.0)),
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])),
+                            (int) (leafArray.length/2 - rise.getValueAtX(d))
+                    );
+                    g2.drawLine(
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0]-1.0)),
+                            (int) (leafArray.length/2 + rise.getValueAtX(d-1.0)),
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])),
+                            (int) (leafArray.length/2 + rise.getValueAtX(d))
+                    );
+                } // end for loop
+                
+                // draw fall curve
+                for (double d = 0.0; d < fall.getBounds()[1]; d += 1.0)
+                {
+                    g2.drawLine(
+                            (int) (distMarginToFall + d - 1.0),
+                            (int) (leafArray.length/2 - fall.getValueAtX(d-1.0)),
+                            (int) (distMarginToFall + d),
+                            (int) (leafArray.length/2 - fall.getValueAtX(d))
+                    );
+                    g2.drawLine(
+                            (int) (distMarginToFall + d - 1.0),
+                            (int) (leafArray.length/2 + fall.getValueAtX(d-1.0)),
+                            (int) (distMarginToFall + d),
+                            (int) (leafArray.length/2 + fall.getValueAtX(d))
+                    );
+                } // end for loop
+            } // end linear
+        } // end class Styles
     } // end class Lamina
 } // end LeafArrayGenerator

@@ -712,16 +712,22 @@ public class GeneratorWindow extends javax.swing.JFrame {
             } // end for loop
 
             Generator arrayGen = new Generator(
-                            width,		// width 
-                            height,		// height
-                            midribLenProp * midribLenPropMult, 	
-                                                // midrib length proportion
-                            1,                  // midrib actual length (unused)
-                            midribOffsetProp * midribOffsetPropMult, // midrib 
-                                                     //start offset proportion
-                            "pinnate",
-                            pVParameters
-                            );
+                    // image
+                    width,		// width 
+                    height,		// height
+                    // midrib
+                    midribLenProp * 
+                            midribLenPropMult, 	// midrib length proportion
+                    1,                          // midrib actual length (unused)
+                    midribOffsetProp * 
+                            midribOffsetPropMult, //start offset proportion
+                    // primary veins
+                    "pinnate",          // style
+                    pVParameters,       // parameters of generation
+                    // lamina
+                    "linear",               // style
+                    new double[] {0.2, 0.2, 0.6} // arguments
+            );
 
             progressBar.setMinimum(0);
             progressBar.setMaximum(i);
