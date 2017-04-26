@@ -130,11 +130,15 @@ public class Generator
                 BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g2 = outputImage.createGraphics();
+        
+        // back background black
+        g2.setColor(GenColor.lamina);
+        g2.fillRect(0, 0, leafArray[0].length, leafArray.length);
 
         int[][] midribData = this.veins.midrib.getMidribPoints(leafArray);
 
         // draw midrib
-        g2.setColor(Color.RED);
+        g2.setColor(GenColor.midrib);
         g2.drawPolyline(midribData[0], midribData[1], midribData.length);
         
         // draw primary veins
@@ -145,9 +149,38 @@ public class Generator
                 g2);
         
         // draw margin of lamina
-        g2.setColor(Color.GREEN);
+        g2.setColor(GenColor.lamina);
         this.lamina.styles.drawLinear(g2);
-
+        
+        // fill the rest of the image that isn't leaf
+        g2.setColor(GenColor.background);
+        // left and right sides of the image
+        g2.fillRect(
+                0, 
+                0, 
+                this.veins.midrib.startOffset, 
+                leafArray.length
+        );
+        g2.fillRect(
+                this.veins.midrib.startOffset + this.veins.midrib.length - 1, 
+                0, 
+                leafArray[0].length, 
+                leafArray.length
+        );
+        
+        // now top and bottom
+        g2.fillRect(
+                0,
+                0,
+                leafArray[0].length,
+                (int) ((leafArray.length - lamina.args[0] * leafArray.length)/2)
+        );
+        g2.fillRect(
+                0,
+                (int) ((leafArray.length/2 + lamina.args[0] * leafArray.length / 2)),
+                leafArray[0].length,
+                leafArray.length
+        );
         return outputImage;
     } // end createBufferedImage
 
@@ -372,6 +405,10 @@ public class Generator
                                 + ( // (i+1.0)*(midrib.length / ((float) (numBranchingVeins)))
                                 (midrib.length / ((float) (numBranchingVeins + 1))) * (i + 1));
                     } // end for loop
+                    
+                    
+                    // find the relative breadth of the leaf
+                    int relBreadth = (int) (leafArray.length/2 * lamina.args[0]);
 
                     // draw veins onto array
                     for (int i = 0; i < numBranchingVeins; i++)
@@ -382,8 +419,64 @@ public class Generator
                         int xEnd = (int) Math.round(xStart + xUnit * branchLengths[i]);
                         int yEnd1 = (int) (yStart - yUnit * branchLengths[i]);
                         int yEnd2 = (int) Math.round(yStart + yUnit * branchLengths[i]);
+                        
+                        /*
+                        To correct for the margin of the lamina, the breadth of 
+                        the leaf must be known. Then, both the x and y components
+                        of the line segment show be scaled. To scale, the y
+                        component is scaled to the raw breadth first, then the
+                        x component. Next, if the new x is in the range of the
+                        rise or fall of the margin, a new y will be calculated
+                        based on the ellipse formed.
+                        */
+                        
+                        // if the end of the vein extends past the margin
+                        if ((yStart-yEnd1) > relBreadth)
+                        {
+                            double oldXDiff = xEnd-xStart;
+                            double newXDiff;
+                            double oldYDiff = yEnd2-yStart;
+                            double newYDiff = relBreadth;
+                           
+                            double changeFact = newYDiff/oldYDiff;
+                            newXDiff = changeFact * oldXDiff;
+                            
+                            xEnd = (int) (xStart + newXDiff); 
+                            yEnd1 = (int) (yStart - newYDiff + 1);
+                            yEnd2 = (int) (yStart + newYDiff - 1);
+                            
+//                            int[] riseRange = {
+//                                midrib.startOffset,
+//                                (int) (midrib.startOffset + midrib.length *
+//                                    lamina.args[1])
+//                            };
+//                            
+//                            int[] fallRange = {
+//                                (int) (midrib.startOffset + lamina.args[2] * 
+//                                    midrib.length),
+//                                (int) (midrib.startOffset + midrib.length *
+//                                    lamina.args[1])
+//                            };
+//
+//                            /* array format:
+//                            [
+//                            [x, y1, y2],
+//                            ...
+//                            ]
+//                            */
+//                            
+//                            int[][] riseComMatrix = new int[(int) (lamina.riseEllipse.h * 2)][3];
+//                            int[][] fallComMatrix = new int[(int) (lamina.fallEllipse.h * 2)][3];
+//                            
+//                            for (int j = 0; j < riseComMatrix.length; j++)
+//                            {
+//                                riseComMatrix[j][0] = midrib.startOffset + j;
+//                                riseComMatrix[j][1] = midrib.startOffset + j;
+//                            } // end for loop
+                            
+                        } // end if the edge of the vein extends past the margin
 
-                        g2.setColor(Color.BLUE);
+                        g2.setColor(GenColor.veins);
                         g2.drawLine(xEnd, yEnd1, xStart, yStart);
                         g2.drawLine(xStart, yStart, xEnd, yEnd2);
                     } // end for loop
@@ -407,6 +500,10 @@ public class Generator
         private String style;
         private double[] args;
         
+        // ellipse stuff
+        public EllipseMath.Ellipse riseEllipse;
+        public EllipseMath.Ellipse fallEllipse;
+        
         public Lamina(Boolean[][] leafArray, Generator.Veins.Midrib midrib, 
                 String style, double[] args)
         {
@@ -423,6 +520,8 @@ public class Generator
         {
             public void drawLinear(Graphics2D g2)
             {
+                g2.setColor(GenColor.background);
+                
                 double breadth = args[0]*leafArray.length;
                 double[] middleSection = {args[1], args[2]};
                 /*
@@ -449,6 +548,9 @@ public class Generator
                         fallLength,
                         breadth / 2.0
                 );
+                
+                riseEllipse = rise;
+                fallEllipse = fall;
                 
                 // draw the flat, linear sides of the leaf
                 // bottom
@@ -481,6 +583,20 @@ public class Generator
                             (int) (midrib.startOffset + (d-rise.getBounds()[0])),
                             (int) (leafArray.length/2 + rise.getValueAtX(d))
                     );
+                    
+                    // draw lines that clear the leaf's background
+                    g2.drawLine(
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])) - 1,
+                            (int) (leafArray.length/2 - rise.getValueAtX(d-1.0)) - 1,
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])) - 1,
+                            (int) (0)
+                    );
+                    g2.drawLine(
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])) - 1,
+                            (int) (leafArray.length/2 + rise.getValueAtX(d-1.0)) + 1,
+                            (int) (midrib.startOffset + (d-rise.getBounds()[0])) - 1,
+                            (int) (leafArray.length)
+                    );
                 } // end for loop
                 
                 // draw fall curve
@@ -497,6 +613,20 @@ public class Generator
                             (int) (leafArray.length/2 + fall.getValueAtX(d-1.0)),
                             (int) (distMarginToFall + d),
                             (int) (leafArray.length/2 + fall.getValueAtX(d))
+                    );
+                    
+                    // draw the lines that clear the backgroud
+                    g2.drawLine(
+                            (int) (distMarginToFall + d),
+                            (int) (leafArray.length/2 - fall.getValueAtX(d-1.0)),
+                            (int) (distMarginToFall + d),
+                            (int) (0)
+                    );
+                    g2.drawLine(
+                            (int) (distMarginToFall + d),
+                            (int) (leafArray.length/2 + fall.getValueAtX(d-1.0)),
+                            (int) (distMarginToFall + d),
+                            (int) (leafArray.length)
                     );
                 } // end for loop
             } // end linear
