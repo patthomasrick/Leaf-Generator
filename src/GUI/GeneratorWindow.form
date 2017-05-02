@@ -72,6 +72,11 @@
         </Menu>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar2">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="FileMenu">
@@ -150,7 +155,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tabsInstructionLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabs" min="-2" pref="641" max="-2" attributes="0"/>
+              <Component id="tabs" pref="746" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,62 +187,54 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="genOptsNumLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="genOptsNumSpinner" min="-2" pref="89" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="pinnateResetButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="226" max="32767" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator5" max="32767" attributes="0"/>
                                   <Component id="progressBar" max="32767" attributes="0"/>
                                   <Component id="jSeparator2" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="pVNumVeinsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="pVAngleLabel" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="pVVeinLengthsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="pVLabel" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="pVVeinLengthsField" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="pVVeinLengthsInstructions" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="pVNumVeinsField" max="32767" attributes="0"/>
-                                                          <Component id="pVAngleField" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="pVNumVeinsLB" min="-2" pref="76" max="-2" attributes="0"/>
-                                                          <Component id="pVAngleLB" min="-2" pref="76" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      <Component id="minVarLabelPV" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="pVNumVeinsField" max="32767" attributes="0"/>
+                                                  <Component id="pVAngleField" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="maxVarLabelPV" max="32767" attributes="0"/>
-                                                  <Component id="pVNumVeinsRB" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="pVAngleRB" alignment="1" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="pVNumVeinsLB" min="-2" pref="76" max="-2" attributes="0"/>
+                                                  <Component id="pVAngleLB" min="-2" pref="76" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="minVarLabelPV" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                  </Group>
-                                  <Component id="jSeparator4" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="genOptsPathLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="genOptsPathField" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="genOptsFileTypeLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="genOptsFileTypeComboBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="maxVarLabelPV" max="32767" attributes="0"/>
+                                          <Component id="pVNumVeinsRB" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="pVAngleRB" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="progressLabel" min="-2" max="-2" attributes="0"/>
@@ -269,6 +266,16 @@
                                       </Group>
                                   </Group>
                                   <Component id="jSeparator1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator4" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="genOptsPathLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="genOptsPathField" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="genOptsFileTypeLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="genOptsFileTypeComboBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
@@ -278,24 +285,35 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="heightField" min="-2" pref="109" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="genOptsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="dimensionsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="genOptsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="laminaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="laminaBreadthLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="laminaBreadthField" min="-2" pref="453" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="genOptsNumLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="laminaRiseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="genOptsNumSpinner" min="-2" pref="89" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="laminaFallSlider" max="32767" attributes="0"/>
+                                          <Component id="laminaRiseSlider" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="laminaFallField" max="32767" attributes="0"/>
+                                          <Component id="laminaRiseField" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="pinnateResetButton" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -328,11 +346,7 @@
                                                   <Component id="midribLengthPropField" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="midribLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="midribLengthPropLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="midribLengthPropLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -342,7 +356,10 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="minVarLabel" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="minVarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="midribLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="midribLengthPropLB" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -351,14 +368,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pVLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="pVNumVeinsField" linkSize="5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="pVLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="pVNumVeinsLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="pVNumVeinsLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -384,12 +399,35 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="pVVeinLengthsField" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="pVVeinLengthsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="pVVeinLengthsInstructions" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="laminaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="laminaBreadthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="laminaBreadthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="laminaRiseLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="laminaRiseField" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="laminaRiseSlider" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="laminaFallField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="laminaFallSlider" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="genOptsLabel" min="-2" max="-2" attributes="0"/>
@@ -407,7 +445,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pinnateResetButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="progressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -591,25 +629,6 @@
                 <Property name="text" type="java.lang.String" value="0.10"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="pVVeinLengthsLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Vein lengths"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="pVVeinLengthsField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ex. 0.15,0.20,0.20,0.15"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pVVeinLengthsFieldActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="pVVeinLengthsInstructions">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mouseover for instructions"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;Enter numbers that are proportions of the height of the image as the lengths of the veins. Enter them consecuitively and &lt;b&gt;separated by commas&lt;/b&gt;.&lt;/html&gt;"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
             </Component>
             <Component class="javax.swing.JLabel" name="genOptsLabel">
@@ -683,6 +702,65 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pinnateResetButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="laminaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lamina"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator5">
+            </Component>
+            <Component class="javax.swing.JLabel" name="laminaBreadthLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Breadth"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="laminaRiseLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End of rise"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start of fall"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="laminaRiseField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0.0 - 1.0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="laminaRiseFieldFocusLost"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="laminaFallField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0.0 - 1.0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="laminaFallFieldFocusLost"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="laminaBreadthField">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Double between 0.0 and 1.0, in relation to image height"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSlider" name="laminaRiseSlider">
+              <Properties>
+                <Property name="value" type="int" value="30"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="laminaRiseSliderMouseReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSlider" name="laminaFallSlider">
+              <Properties>
+                <Property name="value" type="int" value="60"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="laminaFallSliderMouseReleased"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="parallelVeins">
@@ -702,7 +780,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="712" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
