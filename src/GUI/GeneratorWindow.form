@@ -155,7 +155,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tabsInstructionLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabs" pref="746" max="32767" attributes="0"/>
+              <Component id="tabs" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -171,6 +171,9 @@
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="tabs">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Make a leaf that is pinnately veined"/>
+      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -427,7 +430,7 @@
                           </Group>
                           <Component id="laminaFallSlider" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="genOptsLabel" min="-2" max="-2" attributes="0"/>

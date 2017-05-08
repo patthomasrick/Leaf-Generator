@@ -26,6 +26,7 @@ package Generator;
 // imports
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 /**
@@ -140,6 +141,11 @@ public class Generator
         
         // created the associated graphics object to draw to
         Graphics2D g2 = outputImage.createGraphics();
+
+        // turn on antialiasing
+        g2.setRenderingHint(
+                RenderingHints.KEY_ANTIALIASING, 
+                RenderingHints.VALUE_ANTIALIAS_ON);
         
         // set the background's color
         g2.setColor(GenColor.lamina);

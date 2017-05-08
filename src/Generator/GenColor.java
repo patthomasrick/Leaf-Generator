@@ -26,11 +26,13 @@ package Generator;
 /**
  *
  * @author pthom
+ * 
+ * A very simple class to simply contain the colors used in the project.
  */
 public class GenColor
 {
-    public static java.awt.Color lamina = new java.awt.Color(24, 74, 24);
-    public static java.awt.Color midrib = new java.awt.Color(42, 88, 42);
-    public static java.awt.Color veins = new java.awt.Color(42, 88, 42);
-    public static java.awt.Color background = java.awt.Color.BLACK;
+    public static java.awt.Color lamina = new java.awt.Color(68, 143, 48);
+    public static java.awt.Color midrib = new java.awt.Color(15, 72, 0);
+    public static java.awt.Color veins = new java.awt.Color(15, 72, 0);
+    public static java.awt.Color background = java.awt.Color.WHITE;
 }
